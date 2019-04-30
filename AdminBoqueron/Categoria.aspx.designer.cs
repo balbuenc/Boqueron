@@ -10,7 +10,7 @@
 namespace AdminBoqueron {
     
     
-    public partial class Proveedor {
+    public partial class Categoria {
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -31,13 +31,13 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// ProveedorListView control.
+        /// CategoriaListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ProveedorListView;
+        protected global::System.Web.UI.WebControls.ListView CategoriaListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -74,15 +74,6 @@ namespace AdminBoqueron {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView EditFormView;
-        
-        /// <summary>
-        /// ProveedorDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
         
         /// <summary>
         /// CategoriaDS control.

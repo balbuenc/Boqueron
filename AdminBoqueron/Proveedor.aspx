@@ -38,7 +38,7 @@
                             <th>Teléfono</th>
                             <th>Fax</th>
                             <th>RUC</th>
-                          
+
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -63,7 +63,7 @@
                         <asp:Label ID="lblFax" runat="server" Text='<%# Eval("Fax") %>' /></td>
                     <td>
                         <asp:Label ID="lblRUC" runat="server" Text='<%# Eval("RUC") %>' /></td>
-                   
+
 
                     <td>
                         <asp:LinkButton runat="server" ID="EditProveedorBtn" CommandName="Editar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Editar">
@@ -166,7 +166,14 @@
                                             <div class="row">
                                                 <div class="col-3">Categoría</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoría" runat="server" Text='<%# Bind("Categoría") %>' CssClass="form-control" />
+                                                    <asp:DropDownList ID="IdCategoriaDDL"
+                                                        runat="server"
+                                                        DataSourceID="CategoriaDS"
+                                                        DataTextField="Categoria"
+                                                        DataValueField="IdCategoria"
+                                                        CssClass="form-control spacing"
+                                                        SelectedValue='<%# Bind("IdCategoria") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,7 +276,14 @@
                                             <div class="row">
                                                 <div class="col-3">Categoría</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoría" runat="server" Text='<%# Bind("Categoría") %>' CssClass="form-control" />
+                                                    <asp:DropDownList ID="IdCategoriaDDL"
+                                                        runat="server"
+                                                        DataSourceID="CategoriaDS"
+                                                        DataTextField="Categoria"
+                                                        DataValueField="IdCategoria"
+                                                        CssClass="form-control spacing"
+                                                        SelectedValue='<%# Bind("IdCategoria") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,6 +341,9 @@
             <UpdateParameters>
             </UpdateParameters>
         </asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="CategoriaDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
+            SelectCommand="select IdCategoria, Categoria from dbo.categoria order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
 
         <!-- #endregion -->

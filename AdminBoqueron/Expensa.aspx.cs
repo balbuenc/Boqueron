@@ -9,31 +9,30 @@ using System.Web.UI.WebControls;
 
 namespace AdminBoqueron
 {
-    public partial class Proveedor : System.Web.UI.Page
+    public partial class Expensa : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Proveedor.aspx");
+            Response.Redirect("Expensa.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Proveedor.aspx");
+            Response.Redirect("Expensa.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ProveedorDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ExpensaDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Proveedor_get_Proveedor]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdProveedor", ID));
+            cmd = new SqlCommand("dbo.[sp_Expensa_get_Expensa]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdExpensa", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +54,10 @@ namespace AdminBoqueron
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ProveedorDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ExpensaDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Proveedor_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdProveedor", ID));
+            cmd = new SqlCommand("dbo.[sp_Expensa_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdExpensa", ID));
 
 
 
@@ -88,7 +87,7 @@ namespace AdminBoqueron
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                ProveedorListView.DataBind();
+                ExpensaListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,37 +118,29 @@ namespace AdminBoqueron
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdProveedor = (TextBox)EditFormView.FindControl("txtIdProveedor");
-                TextBox txtNombre = (TextBox)EditFormView.FindControl("txtNombre");
-                TextBox txtDirección = (TextBox)EditFormView.FindControl("txtDirección");
-                TextBox txtTeléfono = (TextBox)EditFormView.FindControl("txtTeléfono");
-                TextBox txtFax = (TextBox)EditFormView.FindControl("txtFax");
-                TextBox txtRUC = (TextBox)EditFormView.FindControl("txtRUC");
-                TextBox txtObservación = (TextBox)EditFormView.FindControl("txtObservación");
-                TextBox txtPersonaContacto = (TextBox)EditFormView.FindControl("txtPersonaContacto");
-                TextBox txtSaldoIni = (TextBox)EditFormView.FindControl("txtSaldoIni");
+                DropDownList IdPeriodoDDL = (DropDownList)EditFormView.FindControl("IdPeriodoDDL");
                 DropDownList IdCategoriaDDL = (DropDownList)EditFormView.FindControl("IdCategoriaDDL");
+                DropDownList IdProveedorDDL = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
+                TextBox txtFecha = (TextBox)EditFormView.FindControl("txtFecha");
+                TextBox txtMonto = (TextBox)EditFormView.FindControl("txtMonto");
+                TextBox txtIdExpensa = (TextBox)EditFormView.FindControl("txtIdExpensa");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(ProveedorDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(ExpensaDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "dbo.sp_Proveedor_update";
+                cmd.CommandText = "dbo.sp_Expensa_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdProveedor", txtIdProveedor.Text);
-                cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                cmd.Parameters.AddWithValue("@Dirección", txtDirección.Text);
-                cmd.Parameters.AddWithValue("@Teléfono", txtTeléfono.Text);
-                cmd.Parameters.AddWithValue("@Fax", txtFax.Text);
-                cmd.Parameters.AddWithValue("@RUC", txtRUC.Text);
-                cmd.Parameters.AddWithValue("@Observación", txtObservación.Text);
-                cmd.Parameters.AddWithValue("@PersonaContacto", txtPersonaContacto.Text);
-                cmd.Parameters.AddWithValue("@SaldoIni", txtSaldoIni.Text);
-                cmd.Parameters.AddWithValue("@Categoría", IdCategoriaDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@IdPeriodo", IdPeriodoDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@IdCategoria", IdCategoriaDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@IdProveedor", IdProveedorDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@Fecha", txtFecha.Text);
+                cmd.Parameters.AddWithValue("@Monto", txtMonto.Text);
+                cmd.Parameters.AddWithValue("@IdExpensa", txtIdExpensa.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -159,7 +150,7 @@ namespace AdminBoqueron
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Proveedor.aspx");
+                Response.Redirect("Expensa.aspx");
 
 
             }
@@ -178,7 +169,7 @@ namespace AdminBoqueron
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            ProveedorListView.DataBind();
+            ExpensaListView.DataBind();
 
         }
     }
