@@ -10,43 +10,7 @@
 namespace AdminBoqueron {
     
     
-    public partial class Proveedor {
-        
-        /// <summary>
-        /// txtSearchKey control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchKey;
-        
-        /// <summary>
-        /// searchParameterDDL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList searchParameterDDL;
-        
-        /// <summary>
-        /// PageSizeDDL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList PageSizeDDL;
-        
-        /// <summary>
-        /// SearchBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
+    public partial class Liquidacion {
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -76,13 +40,13 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.WebControls.DataPager MainDataPager;
         
         /// <summary>
-        /// ProveedorListView control.
+        /// LiquidacionListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ProveedorListView;
+        protected global::System.Web.UI.WebControls.ListView LiquidacionListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -121,21 +85,30 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// ProveedorDS control.
+        /// LiquidacionDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource LiquidacionDS;
         
         /// <summary>
-        /// CategoriaDS control.
+        /// PeriodoDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CategoriaDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource PeriodoDS;
+        
+        /// <summary>
+        /// TimbradoDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TimbradoDS;
     }
 }

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace AdminBoqueron
 {
-    public partial class Categoria : System.Web.UI.Page
+    public partial class Liquidacion : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,22 +18,22 @@ namespace AdminBoqueron
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Liquidacion.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Liquidacion.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(LiquidacionDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_get_Categoria]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Liquidacion_get_Liquidacion]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdLiquidacion", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +55,10 @@ namespace AdminBoqueron
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(LiquidacionDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Liquidacion_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdLiquidacion", ID));
 
 
 
@@ -88,11 +88,38 @@ namespace AdminBoqueron
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                CategoriaListView.DataBind();
+                LiquidacionListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 3000);
+            }
+            else if (e.CommandName == "Liquidar")
+            {
+                LiquidarPeriodo(e.CommandArgument.ToString());
+                LiquidacionListView.DataBind();
+
+               
+            }
+            else if (e.CommandName == "Reporte")
+            {
+
+                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fLiquidacionDetalle&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
+
+            }
+            else if (e.CommandName == "Resumen")
+            {
+
+                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fGastos&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
+
+            }
+            else if (e.CommandName == "Ver")
+            {
+
+                Response.Redirect("LiquidacionDetalle.aspx?IdLiquidacion=" + e.CommandArgument.ToString());
+
             }
         }
 
@@ -109,6 +136,24 @@ namespace AdminBoqueron
             EditFormView.ChangeMode(e.NewMode);
         }
 
+        protected void LiquidarPeriodo(String IdLiquidacion)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection conn = new SqlConnection(LiquidacionDS.ConnectionString);
+
+            cmd.Connection = conn;
+
+            cmd.CommandText = "dbo.sp_generar_liquidacion";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@IdLiquidacion", IdLiquidacion);
+            
+            conn.Open();
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
         protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
@@ -119,22 +164,24 @@ namespace AdminBoqueron
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdCategoria = (TextBox)EditFormView.FindControl("txtIdCategoria");
-                TextBox txtCategoria = (TextBox)EditFormView.FindControl("txtCategoria");
-                DropDownList IdCuentaDDL = (DropDownList)EditFormView.FindControl("IdCuentaDDL");
+                TextBox txtIdLiquidacion = (TextBox)EditFormView.FindControl("txtIdLiquidacion");
+                DropDownList IdPeriodoDDL = (DropDownList)EditFormView.FindControl("IdPeriodoDDL");
+                DropDownList IdTimbradoDDL = (DropDownList)EditFormView.FindControl("IdTimbradoDDL");
+                TextBox txtFechaLiquidacion = (TextBox)EditFormView.FindControl("txtFechaLiquidacion");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(CategoriaDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(LiquidacionDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "dbo.sp_Categoria_update";
+                cmd.CommandText = "dbo.sp_Liquidacion_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdCategoria", txtIdCategoria.Text);
-                cmd.Parameters.AddWithValue("@Categoria", txtCategoria.Text);
-                cmd.Parameters.AddWithValue("@IdCuenta", IdCuentaDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdLiquidacion", txtIdLiquidacion.Text);
+                cmd.Parameters.AddWithValue("@IdPeriodo", IdPeriodoDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdTimbrado", IdTimbradoDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@FechaLiquidacion", txtFechaLiquidacion.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -144,7 +191,7 @@ namespace AdminBoqueron
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Categoria.aspx");
+                Response.Redirect("Liquidacion.aspx");
 
 
             }
@@ -163,7 +210,7 @@ namespace AdminBoqueron
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            CategoriaListView.DataBind();
+            LiquidacionListView.DataBind();
 
         }
     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Expensa" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Expensa.aspx.cs" Inherits="AdminBoqueron.Expensa" %>
+﻿<%@ Page Title="Clientes" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="AdminBoqueron.Cliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,7 +6,7 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-8">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
 
                 </div>
@@ -14,6 +14,11 @@
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
+                </div>
+                <div class="col-2">
+                    <asp:LinkButton class="btn btn-primary"  runat="server" id="btnClientes"   OnClick="btnClientes_Click">
+                        <i class="fas fa-file"></i>
+                    </asp:LinkButton>
                 </div>
             </div>
             <div class="row">
@@ -23,31 +28,27 @@
     </div>
 
     <div class="container-fluid">
-        <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="ExpensaListView" PageSize="10">
+         <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="ClienteListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                 <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
             </Fields>
         </asp:DataPager>
-        <asp:ListView ID="ExpensaListView"
+        <asp:ListView ID="ClienteListView"
             runat="server"
-            DataSourceID="ExpensaDS"
-            DataKeyNames="IdExpensa"
+            DataSourceID="ClienteDS"
+            DataKeyNames="IdCliente"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
-                            <th>ID</th>
-                            <th>Periodo</th>
-                            <th>Categoria</th>
-                            <th>Proveedor</th>
-                            <th>Fecha</th>
-                            <th>Monto</th>
-                            <th>Impuesto</th>
-
-
+                            <th>IdCliente</th>
+                            <th>Nombre</th>
+                            <th>RUC</th>
+                            <th>PorcentCoPropiedad</th>
+                            <th>Unidad</th>
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -62,30 +63,28 @@
                 <tr>
 
                     <td>
-                        <asp:Label ID="lblIdExpensa" runat="server" Text='<%# Eval("IdExpensa") %>' /></td>
+                        <asp:Label ID="lblIdCliente" runat="server" Text='<%# Eval("IdCliente") %>' /></td>
                     <td>
-                        <asp:Label ID="lblIdPeriodo" runat="server" Text='<%# Eval("IdPeriodo") %>' /></td>
+                        <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("Nombre") %>' /></td>
+
                     <td>
-                        <asp:Label ID="lblIdCategoria" runat="server" Text='<%# Eval("Categoria") %>' /></td>
+                        <asp:Label ID="lblRUC" runat="server" Text='<%# Eval("RUC") %>' /></td>
+
                     <td>
-                        <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("Proveedor") %>' /></td>
+                        <asp:Label ID="lblPorcentCoPropiedad" runat="server" Text='<%# Eval("PorcentCoPropiedad") %>' /></td>
                     <td>
-                        <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblMonto" runat="server" Text='<%# Eval("Monto") %>' /></td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Impuesto") %>' /></td>
+                        <asp:Label ID="lblUnidad" runat="server" Text='<%# Eval("Unidad") %>' /></td>
 
 
                     <td>
-                        <asp:LinkButton runat="server" ID="EditExpensaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdExpensa")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditClienteBtn" CommandName="Editar" CommandArgument='<%# Eval("IdCliente")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton runat="server" ID="DeleteExpensaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdExpensa")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteClienteBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdCliente")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -107,12 +106,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar expensa.</b>
+                                <b id="addModalLabel">Agregar nueva Cliente.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="ExpensaDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdExpensa" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="ClienteDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdCliente" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -122,61 +121,33 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">IdExpensa</div>
+                                                <div class="col-3">IdCliente</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdExpensa" runat="server" Text="" CssClass="form-control" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdCliente" runat="server" Text="" CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Periodo</div>
+                                                <div class="col-3">Nombre</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdPeriodoDDL"
-                                                        runat="server"
-                                                        DataSourceID="PeriodoDS"
-                                                        DataTextField="IdPeriodo"
-                                                        DataValueField="IdPeriodo"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdPeriodo") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-3">Proveedor</div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
-                                                        runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Proveedor"
-                                                        DataValueField="IdProveedor"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
-                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtNombre" runat="server" Text='<%# Bind("Nombre") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Fecha</div>
+                                                <div class="col-3">RUC</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFecha" runat="server" Text='<%# Bind("Fecha") %>' CssClass="form-control" TextMode="Date" />
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Monto</div>
+                                                <div class="col-3">PorcentCoPropiedad</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtMonto" runat="server" Text='<%# Bind("Monto") %>' CssClass="form-control" />
+                                                    <asp:TextBox ID="txtPorcentCoPropiedad" runat="server" Text='<%# Bind("PorcentCoPropiedad") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Impuesto</div>
+                                                <div class="col-3">Unidad</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdImpuestoDDL"
-                                                        runat="server"
-                                                        DataSourceID="ImpuestoDS"
-                                                        DataTextField="Impuesto"
-                                                        DataValueField="IdImpuesto"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdImpuesto") %>'>
-                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtUnidad" runat="server" Text='<%# Bind("Unidad") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
 
@@ -186,9 +157,7 @@
                                         <hr />
 
                                         <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
-
                                         <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-
                                     </InsertItemTemplate>
                                     <ItemTemplate>
                                     </ItemTemplate>
@@ -216,74 +185,48 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Expensa.</b>
+                                <b id="editModalLabel">Modificar Cliente.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdExpensa" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdCliente" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">IdExpensa</div>
+                                                <div class="col-3">IdCliente</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdExpensa" runat="server" Text='<%# Bind("IdExpensa") %>' CssClass="form-control" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdCliente" runat="server" Text='<%# Bind("IdCliente") %>' CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Periodo</div>
+                                                <div class="col-3">Nombre</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdPeriodoDDL"
-                                                        runat="server"
-                                                        DataSourceID="PeriodoDS"
-                                                        DataTextField="IdPeriodo"
-                                                        DataValueField="IdPeriodo"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdPeriodo") %>'>
-                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtNombre" runat="server" Text='<%# Bind("Nombre") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">RUC</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">PorcentCoPropiedad</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtPorcentCoPropiedad" runat="server" Text='<%# Bind("PorcentCoPropiedad") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Unidad</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtUnidad" runat="server" Text='<%# Bind("Unidad") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-3">Proveedor</div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
-                                                        runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Proveedor"
-                                                        DataValueField="IdProveedor"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">Fecha</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtFecha" runat="server" Text='<%# Bind("Fecha") %>' CssClass="form-control" TextMode="Date" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">Monto</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtMonto" runat="server" Text='<%# Bind("Monto") %>' CssClass="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">Impuesto</div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdImpuestoDDL"
-                                                        runat="server"
-                                                        DataSourceID="ImpuestoDS"
-                                                        DataTextField="Impuesto"
-                                                        DataValueField="IdImpuesto"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdImpuesto") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <hr />
 
@@ -318,33 +261,26 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="ExpensaDS"
+        <asp:SqlDataSource ID="ClienteDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            InsertCommand="dbo.sp_Expensa_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="dbo.sp_Expensa_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="dbo.sp_Cliente_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="dbo.sp_Cliente_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="IdPeriodo" Type="String" />
-                <asp:Parameter Name="IdProveedor" Type="Int32" />
-                <asp:Parameter Name="Fecha" Type="DateTime" />
-                <asp:Parameter Name="Monto" Type="Decimal" />
-                <asp:Parameter Name="IdImpuesto" Type="Int16" />
+                
+                <asp:Parameter Name="Nombre" Type="String" />
+
+                <asp:Parameter Name="RUC" Type="String" />
+
+                <asp:Parameter Name="PorcentCoPropiedad" Type="Decimal" />
+                <asp:Parameter Name="Unidad" Type="String" />
+
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
         </asp:SqlDataSource>
 
-
-
-        <asp:SqlDataSource ID="ProveedorDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            SelectCommand="select IdProveedor, Nombre as Proveedor from dbo.Proveedor order by 2" SelectCommandType="Text"></asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="PeriodoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            SelectCommand="select IdPeriodo  from dbo.Periodo where IdPeriodo not in (select IdPeriodo from Liquidacion) order by 1" SelectCommandType="Text"></asp:SqlDataSource>
-
-         <asp:SqlDataSource ID="ImpuestoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            SelectCommand="select IdImpuesto , impuesto from impuesto order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
 
         <!-- #endregion -->

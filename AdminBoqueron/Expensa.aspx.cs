@@ -119,11 +119,12 @@ namespace AdminBoqueron
             {
                 //Obtengo los valores de los campos a editar
                 DropDownList IdPeriodoDDL = (DropDownList)EditFormView.FindControl("IdPeriodoDDL");
-                DropDownList IdCategoriaDDL = (DropDownList)EditFormView.FindControl("IdCategoriaDDL");
+                
                 DropDownList IdProveedorDDL = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
                 TextBox txtFecha = (TextBox)EditFormView.FindControl("txtFecha");
                 TextBox txtMonto = (TextBox)EditFormView.FindControl("txtMonto");
                 TextBox txtIdExpensa = (TextBox)EditFormView.FindControl("txtIdExpensa");
+                DropDownList IdImpuestoDDL = (DropDownList)EditFormView.FindControl("IdImpuestoDDL");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
@@ -136,11 +137,12 @@ namespace AdminBoqueron
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@IdPeriodo", IdPeriodoDDL.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@IdCategoria", IdCategoriaDDL.SelectedValue.ToString());
+
                 cmd.Parameters.AddWithValue("@IdProveedor", IdProveedorDDL.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Fecha", txtFecha.Text);
                 cmd.Parameters.AddWithValue("@Monto", txtMonto.Text);
                 cmd.Parameters.AddWithValue("@IdExpensa", txtIdExpensa.Text);
+                cmd.Parameters.AddWithValue("@IdImpuesto", IdImpuestoDDL.SelectedValue.ToString());
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

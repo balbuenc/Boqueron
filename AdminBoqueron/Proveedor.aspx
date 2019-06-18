@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="AdminBoqueron.Proveedor" %>
+﻿<%@ Page Title="Proveedores" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="AdminBoqueron.Proveedor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,23 +6,76 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                <div class="col">
+                    <h3><%:Page.Title%></h3>
                 </div>
             </div>
             <div class="row">
-                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
+                <div class="col-5">
+                    Palabra clave
+                </div>
+                <div class="col-2">
+                    Criterio
+                </div>
+                <div class="col-2">
+                    Páginas
+                </div>
+                <div class="col-3">
+                    Comandos
+                </div>
+            </div>
+            <asp:Panel runat="server" DefaultButton="SearchBtn">
+                <div class="row">
+                    <div class="col-5">
+                        <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-2">
+                        <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="NOMBRE" Value="NOMBRE"></asp:ListItem>
+                            <asp:ListItem Text="DIRECCION" Value="DIRECCION"></asp:ListItem>
+                            <asp:ListItem Text="RUC" Value="RUC"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-2">
+                      
+                        <asp:DropDownList ID="PageSizeDDL" runat="server" CssClass="custom-select"  AutoPostBack="true">
+                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                            <asp:ListItem Text="20" Value="20"></asp:ListItem>
+                            <asp:ListItem Text="30" Value="30"></asp:ListItem>
+                            <asp:ListItem Text="40" Value="40"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-3">
+                        <div class="btn-group">
+                            <asp:LinkButton runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" CssClass="btn btn-outline-primary">
+                                Bucar 
+                                <span><i class="fa fa-search" ></i></span>
+                            </asp:LinkButton>
+                            <button class="btn btn-outline-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
+                                Agregar Proveedor 
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </asp:Panel>
+            <div class="row">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control  alert-warning" />
             </div>
         </div>
     </div>
 
     <div class="container-fluid">
+        <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="ProveedorListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+            </Fields>
+        </asp:DataPager>
         <asp:ListView ID="ProveedorListView"
             runat="server"
             DataSourceID="ProveedorDS"
@@ -95,7 +148,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo Depósito.</b>
+                                <b id="addModalLabel">Agregar proveedor.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -152,13 +205,13 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">PersonaContacto</div>
+                                                <div class="col-3">Contacto</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtPersonaContacto" runat="server" Text='<%# Bind("PersonaContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">SaldoIni</div>
+                                                <div class="col-3">Saldo</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtSaldoIni" runat="server" Text='<%# Bind("SaldoIni") %>' CssClass="form-control" />
                                                 </div>
@@ -209,7 +262,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Depósito.</b>
+                                <b id="editModalLabel">Modificar proveedor.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -262,15 +315,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">PersonaContacto</div>
+                                                <div class="col-3">Contacto</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtPersonaContacto" runat="server" Text='<%# Bind("PersonaContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">SaldoIni</div>
+                                                <div class="col-3">Saldo</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtSaldoIni" runat="server" Text='<%# Bind("SaldoIni") %>' CssClass="form-control" />
+                                                    <asp:TextBox ID="txtSaldoIni" runat="server" Text='<%# Convert.ToInt32( Eval("SaldoIni")) %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -336,10 +389,14 @@
                 <asp:Parameter Name="Observación" Type="String" />
                 <asp:Parameter Name="PersonaContacto" Type="String" />
                 <asp:Parameter Name="SaldoIni" Type="String" />
-                <asp:Parameter Name="Categoría" Type="String" />
+                <asp:Parameter Name="IdCategoria" Type="Int16" />
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="CategoriaDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"

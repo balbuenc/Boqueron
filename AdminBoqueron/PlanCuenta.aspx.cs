@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace AdminBoqueron
 {
-    public partial class Categoria : System.Web.UI.Page
+    public partial class PlanCuenta : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,22 +18,22 @@ namespace AdminBoqueron
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("PlanCuenta.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("PlanCuenta.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(PlanCuentaDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_get_Categoria]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_PlanCuenta_get_PlanCuenta]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdCuenta", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +55,10 @@ namespace AdminBoqueron
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(PlanCuentaDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_PlanCuenta_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdCuenta", ID));
 
 
 
@@ -88,7 +88,7 @@ namespace AdminBoqueron
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                CategoriaListView.DataBind();
+                PlanCuentaListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,22 +119,23 @@ namespace AdminBoqueron
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdCategoria = (TextBox)EditFormView.FindControl("txtIdCategoria");
-                TextBox txtCategoria = (TextBox)EditFormView.FindControl("txtCategoria");
-                DropDownList IdCuentaDDL = (DropDownList)EditFormView.FindControl("IdCuentaDDL");
+                TextBox txtIdCuenta = (TextBox)EditFormView.FindControl("txtIdCuenta");
+                TextBox txtNroCuenta = (TextBox)EditFormView.FindControl("txtNroCuenta");
+                TextBox txtCuenta = (TextBox)EditFormView.FindControl("txtCuenta");
+
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(CategoriaDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(PlanCuentaDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "dbo.sp_Categoria_update";
+                cmd.CommandText = "dbo.sp_PlanCuenta_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdCategoria", txtIdCategoria.Text);
-                cmd.Parameters.AddWithValue("@Categoria", txtCategoria.Text);
-                cmd.Parameters.AddWithValue("@IdCuenta", IdCuentaDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdCuenta", txtIdCuenta.Text);
+                cmd.Parameters.AddWithValue("@NroCuenta", txtNroCuenta.Text);
+                cmd.Parameters.AddWithValue("@Cuenta", txtCuenta.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -144,7 +145,7 @@ namespace AdminBoqueron
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Categoria.aspx");
+                Response.Redirect("PlanCuenta.aspx");
 
 
             }
@@ -163,7 +164,7 @@ namespace AdminBoqueron
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            CategoriaListView.DataBind();
+            PlanCuentaListView.DataBind();
 
         }
     }

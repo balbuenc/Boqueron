@@ -13,8 +13,14 @@ namespace AdminBoqueron
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MainDataPager.PageSize = Convert.ToInt16(PageSizeDDL.SelectedValue);
         }
+
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            PeriodoListView.DataBind();
+        }
+
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
             Response.Redirect("Periodo.aspx");

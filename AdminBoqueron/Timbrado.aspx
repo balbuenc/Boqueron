@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Categorias" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Categoria.aspx.cs" Inherits="AdminBoqueron.Categoria" %>
+﻿<%@ Page Title="Talonarios" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Timbrado.aspx.cs" Inherits="AdminBoqueron.Timbrado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,25 +23,29 @@
     </div>
 
     <div class="container-fluid">
-         <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="CategoriaListView" PageSize="10">
+          <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="TimbradoListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                 <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
             </Fields>
         </asp:DataPager>
-        <asp:ListView ID="CategoriaListView"
+        <asp:ListView ID="TimbradoListView"
             runat="server"
-            DataSourceID="CategoriaDS"
-            DataKeyNames="IdCategoria"
+            DataSourceID="TimbradoDS"
+            DataKeyNames="IdTimbrado"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
                             <th>ID</th>
-                            <th>Categoria</th>
-                            <th>Cuenta</th>
+                            <th>Timbrado</th>
+                            <th>Emisión</th>
+                            <th>Vencimiento</th>
+                            <th>Inicio Serie</th>
+                            <th>Final Serie</th>
+
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -54,23 +58,31 @@
             <ItemTemplate>
 
                 <tr>
-                    
-                    <td>
-                        <asp:Label ID="lblIdCategoria" runat="server" Text='<%# Eval("IdCategoria") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblCategoria" runat="server" Text='<%# Eval("Categoria") %>' /></td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Cuenta") %>' /></td>
 
                     <td>
-                        <asp:LinkButton runat="server" ID="EditCategoriaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdCategoria")%>' ToolTip="Editar">
+                        <asp:Label ID="lblIDTimbrado" runat="server" Text='<%# Eval("IDTimbrado") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblTimbrado" runat="server" Text='<%# Eval("Timbrado") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblEmision" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("Emision")) %>' /></td>
+                    <td>
+                        <asp:Label ID="lblVencimiento" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("Vencimiento")) %>' /></td>
+                    <td>
+                        <asp:Label ID="lblInicioSerie" runat="server" Text='<%# Eval("InicioSerie") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblFinalSerie" runat="server" Text='<%# Eval("FinalSerie") %>' /></td>
+
+
+
+                    <td>
+                        <asp:LinkButton runat="server" ID="EditTimbradoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTimbrado")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton runat="server" ID="DeleteCategoriaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdCategoria")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteTimbradoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTimbrado")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -92,12 +104,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nueva Categoria.</b>
+                                <b id="addModalLabel">Agregar nueva Timbrado.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="CategoriaDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdCategoria" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="TimbradoDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdTimbrado" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -107,30 +119,37 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3">IDTimbrado</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdCategoria" runat="server" Text="" CssClass="form-control" Enabled="false" />
-                                                </div>
+                                                    <asp:Label ID="txtIDTimbrado" runat="server" Text="" CssClass="form-control mitad" Enabled="false" /></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Categoria</div>
+                                                <div class="col-3">Timbrado</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoria" runat="server" Text='<%# Bind("Categoria") %>' CssClass="form-control" />
-                                                </div>
+                                                    <asp:TextBox ID="txtTimbrado" runat="server" Text='<%# Bind("Timbrado") %>' CssClass="form-control" /></div>
                                             </div>
-                                             <div class="row">
-                                                <div class="col-3">Cuenta</div>
+                                            <div class="row">
+                                                <div class="col-3">Emision</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdCuentaDDL"
-                                                        runat="server"
-                                                        DataSourceID="CuentaDS"
-                                                        DataTextField="Cuenta"
-                                                        DataValueField="IdCuenta"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdCuenta") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
+                                                    <asp:TextBox ID="txtEmision" runat="server" Text='<%# Bind("Emision") %>' CssClass="form-control" TextMode="Date"  /></div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-3">Vencimiento</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtVencimiento" runat="server" Text='<%# Bind("Vencimiento") %>' CssClass="form-control" TextMode="Date" /></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">InicioSerie</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtInicioSerie" runat="server" Text='<%# Bind("InicioSerie") %>' CssClass="form-control" /></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">FinalSerie</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtFinalSerie" runat="server" Text='<%# Bind("FinalSerie") %>' CssClass="form-control" /></div>
+                                            </div>
+
+
 
                                         </div>
 
@@ -165,39 +184,47 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Categoria.</b>
+                                <b id="editModalLabel">Modificar Timbrado.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdCategoria" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdTimbrado" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3">IDTimbrado</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdCategoria" runat="server" Text='<%# Bind("IdCategoria") %>' CssClass="form-control" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIDTimbrado" runat="server" Text='<%# Bind("IDTimbrado") %>' CssClass="form-control mitad" Enabled="false" /></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Categoria</div>
+                                                <div class="col-3">Timbrado</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoria" runat="server" Text='<%# Bind("Categoria") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtTimbrado" runat="server" Text='<%# Bind("Timbrado") %>' CssClass="form-control" /></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Cuenta</div>
+                                                <div class="col-3">Emision</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdCuentaDDL"
-                                                        runat="server"
-                                                        DataSourceID="CuentaDS"
-                                                        DataTextField="Cuenta"
-                                                        DataValueField="IdCuenta"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdCuenta") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
+                                                    <asp:TextBox ID="txtEmision" runat="server" Text='<%#  Bind("Emision") %>' CssClass="form-control" TextMode="Date"  /></div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-3">Vencimiento</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtVencimiento" runat="server" Text='<%# Bind("Vencimiento") %>' CssClass="form-control" TextMode="Date" /></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">InicioSerie</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtInicioSerie" runat="server" Text='<%# Bind("InicioSerie") %>' CssClass="form-control" /></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">FinalSerie</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtFinalSerie" runat="server" Text='<%# Bind("FinalSerie") %>' CssClass="form-control" /></div>
+                                            </div>
+
                                         </div>
                                         <hr />
 
@@ -232,24 +259,24 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="CategoriaDS"
+        <asp:SqlDataSource ID="TimbradoDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            InsertCommand="dbo.sp_Categoria_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="dbo.sp_Categoria_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="dbo.sp_Timbrado_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="dbo.sp_Timbrado_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-
-                <asp:Parameter Name="Categoria" Type="String" />
-                <asp:Parameter Name="IdCuenta" Type="Int16" />
+               
+                <asp:Parameter Name="Timbrado" Type="String" />
+                <asp:Parameter Name="Emision" Type="DateTime" />
+                <asp:Parameter Name="Vencimiento" Type="DateTime" />
+                <asp:Parameter Name="InicioSerie" Type="Int32" />
+                <asp:Parameter Name="FinalSerie" Type="Int32" />
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
         </asp:SqlDataSource>
 
-
-          <asp:SqlDataSource ID="CuentaDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            SelectCommand="select IdCuenta,  Cuenta + ' ['+ NroCuenta +']' as Cuenta from PlanCuenta order by NroCuenta" SelectCommandType="Text"></asp:SqlDataSource>
 
 
         <!-- #endregion -->

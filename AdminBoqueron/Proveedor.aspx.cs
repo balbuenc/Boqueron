@@ -13,7 +13,12 @@ namespace AdminBoqueron
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            MainDataPager.PageSize = Convert.ToInt16(PageSizeDDL.SelectedValue);
+        }
 
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            ProveedorListView.DataBind();
         }
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
@@ -90,7 +95,7 @@ namespace AdminBoqueron
                 DeleteRecord(e.CommandArgument.ToString());
                 ProveedorListView.DataBind();
 
-                ErrorLabel.Text = "El Registro se eliminó correctamente.";
+                ErrorLabel.Text = "El registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 3000);
             }
@@ -149,7 +154,7 @@ namespace AdminBoqueron
                 cmd.Parameters.AddWithValue("@Observación", txtObservación.Text);
                 cmd.Parameters.AddWithValue("@PersonaContacto", txtPersonaContacto.Text);
                 cmd.Parameters.AddWithValue("@SaldoIni", txtSaldoIni.Text);
-                cmd.Parameters.AddWithValue("@Categoría", IdCategoriaDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@IdCategoria", IdCategoriaDDL.SelectedValue.ToString());
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -181,5 +186,7 @@ namespace AdminBoqueron
             ProveedorListView.DataBind();
 
         }
+
+      
     }
 }

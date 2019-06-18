@@ -1,0 +1,50 @@
+﻿
+
+
+body {
+    font-family: 'Segoe UI';
+}
+
+
+.titulo {
+    text-align:center;
+    font-family:'Segoe UI'
+}
+
+.azul {
+    color:blue
+}
+
+
+
+.mitad {
+    width:50%
+}
+
+.row {
+    padding-top:1px;
+    padding-bottom:1px
+}
+
+.table{
+    font-size:small
+}
+
+#addModalLabel {
+
+    color:blue;
+    font-weight:bold;
+    font-size:large;
+}
+
+#editModalLabel {
+    color: blue;
+    font-weight: bold;
+    font-size:large;
+}
+
+.modal-dialog.modal-1024 {
+    max-width:1024px;
+    width: 1024px;
+    margin: 30px auto;
+}

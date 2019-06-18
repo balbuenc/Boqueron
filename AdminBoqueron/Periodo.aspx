@@ -6,23 +6,78 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                <div class="col">
+                    <h3><%:Page.Title%></h3>
                 </div>
             </div>
             <div class="row">
-                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
+                <div class="col-5">
+                    Palabra clave
+                </div>
+                <div class="col-2">
+                    Criterio
+                </div>
+                <div class="col-2">
+                    Páginas
+                </div>
+                <div class="col-3">
+                    Comandos
+                </div>
+            </div>
+            <asp:Panel runat="server" DefaultButton="SearchBtn">
+                <div class="row">
+                    <div class="col-5">
+                        <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-2">
+                        
+                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="ID" Value="ID"></asp:ListItem>
+                            </asp:DropDownList>
+                    
+                    </div>
+                    <div class="col-2">
+
+                        <asp:DropDownList ID="PageSizeDDL" runat="server" CssClass="custom-select" AutoPostBack="true">
+                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                            <asp:ListItem Text="20" Value="20"></asp:ListItem>
+                            <asp:ListItem Text="30" Value="30"></asp:ListItem>
+                            <asp:ListItem Text="40" Value="40"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-3">
+                        <div class="btn-group">
+                            <asp:LinkButton runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" CssClass="btn btn-outline-primary">
+                                Bucar 
+                                <span><i class="fa fa-search" ></i></span>
+                            </asp:LinkButton>
+                            <button class="btn btn-outline-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
+                                Agregar periodo 
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </asp:Panel>
+            <div class="row">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control  alert-warning" />
             </div>
         </div>
+
+
     </div>
 
     <div class="container-fluid">
+        <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="PeriodoListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+            </Fields>
+        </asp:DataPager>
         <asp:ListView ID="PeriodoListView"
             runat="server"
             DataSourceID="PeriodoDS"
@@ -87,7 +142,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nueva Periodo.</b>
+                                <b id="addModalLabel">Agregar periodo.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -104,7 +159,7 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdPeriodo" runat="server" Text='<%# Bind("IdPeriodo") %>' CssClass="form-control"  />
+                                                    <asp:TextBox ID="txtIdPeriodo" runat="server" Text='<%# Bind("IdPeriodo") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -154,7 +209,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Periodo.</b>
+                                <b id="editModalLabel">Modificar periodo.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -167,7 +222,7 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdPeriodo" runat="server" Text='<%# Bind("IdPeriodo") %>' CssClass="form-control" Enabled="false"/>
+                                                    <asp:TextBox ID="txtIdPeriodo" runat="server" Text='<%# Bind("IdPeriodo") %>' CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -231,6 +286,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
 

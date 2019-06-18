@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace AdminBoqueron
 {
-    public partial class Categoria : System.Web.UI.Page
+    public partial class Timbrado : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,22 +18,22 @@ namespace AdminBoqueron
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Timbrado.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Timbrado.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(TimbradoDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_get_Categoria]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Timbrado_get_Timbrado]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdTimbrado", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +55,10 @@ namespace AdminBoqueron
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(TimbradoDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Timbrado_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdTimbrado", ID));
 
 
 
@@ -88,7 +88,7 @@ namespace AdminBoqueron
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                CategoriaListView.DataBind();
+                TimbradoListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,22 +119,29 @@ namespace AdminBoqueron
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdCategoria = (TextBox)EditFormView.FindControl("txtIdCategoria");
-                TextBox txtCategoria = (TextBox)EditFormView.FindControl("txtCategoria");
-                DropDownList IdCuentaDDL = (DropDownList)EditFormView.FindControl("IdCuentaDDL");
+                TextBox txtIDTimbrado = (TextBox)EditFormView.FindControl("txtIDTimbrado");
+                TextBox txtTimbrado = (TextBox)EditFormView.FindControl("txtTimbrado");
+                TextBox txtEmision = (TextBox)EditFormView.FindControl("txtEmision");
+                TextBox txtVencimiento = (TextBox)EditFormView.FindControl("txtVencimiento");
+                TextBox txtInicioSerie = (TextBox)EditFormView.FindControl("txtInicioSerie");
+                TextBox txtFinalSerie = (TextBox)EditFormView.FindControl("txtFinalSerie");
+
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(CategoriaDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(TimbradoDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "dbo.sp_Categoria_update";
+                cmd.CommandText = "dbo.sp_Timbrado_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdCategoria", txtIdCategoria.Text);
-                cmd.Parameters.AddWithValue("@Categoria", txtCategoria.Text);
-                cmd.Parameters.AddWithValue("@IdCuenta", IdCuentaDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IDTimbrado", txtIDTimbrado.Text);
+                cmd.Parameters.AddWithValue("@Timbrado", txtTimbrado.Text);
+                cmd.Parameters.AddWithValue("@Emision", txtEmision.Text);
+                cmd.Parameters.AddWithValue("@Vencimiento", txtVencimiento.Text);
+                cmd.Parameters.AddWithValue("@InicioSerie", txtInicioSerie.Text);
+                cmd.Parameters.AddWithValue("@FinalSerie", txtFinalSerie.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -144,7 +151,7 @@ namespace AdminBoqueron
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Categoria.aspx");
+                Response.Redirect("Timbrado.aspx");
 
 
             }
@@ -163,7 +170,7 @@ namespace AdminBoqueron
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            CategoriaListView.DataBind();
+            TimbradoListView.DataBind();
 
         }
     }

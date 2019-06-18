@@ -31,6 +31,15 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
+        /// MainDataPager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager MainDataPager;
+        
+        /// <summary>
         /// ExpensaListView control.
         /// </summary>
         /// <remarks>
@@ -85,15 +94,6 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.WebControls.SqlDataSource ExpensaDS;
         
         /// <summary>
-        /// CategoriaDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CategoriaDS;
-        
-        /// <summary>
         /// ProveedorDS control.
         /// </summary>
         /// <remarks>
@@ -110,5 +110,14 @@ namespace AdminBoqueron {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource PeriodoDS;
+        
+        /// <summary>
+        /// ImpuestoDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ImpuestoDS;
     }
 }

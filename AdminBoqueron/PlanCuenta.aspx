@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Categorias" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Categoria.aspx.cs" Inherits="AdminBoqueron.Categoria" %>
+﻿<%@ Page Title="Plan Cuentas" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="PlanCuenta.aspx.cs" Inherits="AdminBoqueron.PlanCuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,25 +23,27 @@
     </div>
 
     <div class="container-fluid">
-         <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="CategoriaListView" PageSize="10">
+         <asp:DataPager ID="MainDataPager" runat="server" PagedControlID="PlanCuentaListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                 <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
             </Fields>
         </asp:DataPager>
-        <asp:ListView ID="CategoriaListView"
+        <asp:ListView ID="PlanCuentaListView"
             runat="server"
-            DataSourceID="CategoriaDS"
-            DataKeyNames="IdCategoria"
+            DataSourceID="PlanCuentaDS"
+            DataKeyNames="IdCuenta"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
                             <th>ID</th>
-                            <th>Categoria</th>
+                            <th>Nro. Cuenta</th>
                             <th>Cuenta</th>
+
+
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -54,23 +56,25 @@
             <ItemTemplate>
 
                 <tr>
-                    
-                    <td>
-                        <asp:Label ID="lblIdCategoria" runat="server" Text='<%# Eval("IdCategoria") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblCategoria" runat="server" Text='<%# Eval("Categoria") %>' /></td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Cuenta") %>' /></td>
 
                     <td>
-                        <asp:LinkButton runat="server" ID="EditCategoriaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdCategoria")%>' ToolTip="Editar">
+                        <asp:Label ID="lblIdCuenta" runat="server" Text='<%# Eval("IdCuenta") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblNroCuenta" runat="server" Text='<%# Eval("NroCuenta") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblCuenta" runat="server" Text='<%# Eval("Cuenta") %>' /></td>
+
+
+
+                    <td>
+                        <asp:LinkButton runat="server" ID="EditPlanCuentaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdCuenta")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton runat="server" ID="DeleteCategoriaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdCategoria")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeletePlanCuentaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdCuenta")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -92,12 +96,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nueva Categoria.</b>
+                                <b id="addModalLabel">Agregar Plan de Cuenta.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="CategoriaDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdCategoria" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="PlanCuentaDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdCuenta" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -107,30 +111,26 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3">IdCuenta</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdCategoria" runat="server" Text="" CssClass="form-control" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdCuenta" runat="server" Text="" CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Categoria</div>
+                                                <div class="col-3">NroCuenta</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoria" runat="server" Text='<%# Bind("Categoria") %>' CssClass="form-control" />
+                                                    <asp:TextBox ID="txtNroCuenta" runat="server" Text='<%# Bind("NroCuenta") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
-                                             <div class="row">
+                                            <div class="row">
                                                 <div class="col-3">Cuenta</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdCuentaDDL"
-                                                        runat="server"
-                                                        DataSourceID="CuentaDS"
-                                                        DataTextField="Cuenta"
-                                                        DataValueField="IdCuenta"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdCuenta") %>'>
-                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtCuenta" runat="server" Text='<%# Bind("Cuenta") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+
+
+
 
                                         </div>
 
@@ -165,39 +165,35 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Categoria.</b>
+                                <b id="editModalLabel">Modificar PlanCuenta.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdCategoria" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdCuenta" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3">IdCuenta</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdCategoria" runat="server" Text='<%# Bind("IdCategoria") %>' CssClass="form-control" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdCuenta" runat="server" Text='<%# Bind("IdCuenta") %>' CssClass="form-control" Enabled="false" />
+                                                </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Categoria</div>
+                                                <div class="col-3">NroCuenta</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCategoria" runat="server" Text='<%# Bind("Categoria") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtNroCuenta" runat="server" Text='<%# Bind("NroCuenta") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Cuenta</div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdCuentaDDL"
-                                                        runat="server"
-                                                        DataSourceID="CuentaDS"
-                                                        DataTextField="Cuenta"
-                                                        DataValueField="IdCuenta"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdCuenta") %>'>
-                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtCuenta" runat="server" Text='<%# Bind("Cuenta") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+
                                         </div>
                                         <hr />
 
@@ -232,24 +228,21 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="CategoriaDS"
+        <asp:SqlDataSource ID="PlanCuentaDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            InsertCommand="dbo.sp_Categoria_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="dbo.sp_Categoria_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="dbo.sp_PlanCuenta_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="dbo.sp_PlanCuenta_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-
-                <asp:Parameter Name="Categoria" Type="String" />
-                <asp:Parameter Name="IdCuenta" Type="Int16" />
+                <asp:Parameter Name="NroCuenta" Type="String" />
+                <asp:Parameter Name="Cuenta" Type="String" />
+              
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
         </asp:SqlDataSource>
 
-
-          <asp:SqlDataSource ID="CuentaDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
-            SelectCommand="select IdCuenta,  Cuenta + ' ['+ NroCuenta +']' as Cuenta from PlanCuenta order by NroCuenta" SelectCommandType="Text"></asp:SqlDataSource>
 
 
         <!-- #endregion -->

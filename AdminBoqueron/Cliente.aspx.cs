@@ -9,31 +9,30 @@ using System.Web.UI.WebControls;
 
 namespace AdminBoqueron
 {
-    public partial class Categoria : System.Web.UI.Page
+    public partial class Cliente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Cliente.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Categoria.aspx");
+            Response.Redirect("Cliente.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ClienteDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_get_Categoria]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Cliente_get_Cliente]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdCliente", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +54,10 @@ namespace AdminBoqueron
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(CategoriaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ClienteDS.ConnectionString);
 
-            cmd = new SqlCommand("dbo.[sp_Categoria_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCategoria", ID));
+            cmd = new SqlCommand("dbo.[sp_Cliente_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdCliente", ID));
 
 
 
@@ -88,7 +87,7 @@ namespace AdminBoqueron
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                CategoriaListView.DataBind();
+                ClienteListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,22 +118,30 @@ namespace AdminBoqueron
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdCategoria = (TextBox)EditFormView.FindControl("txtIdCategoria");
-                TextBox txtCategoria = (TextBox)EditFormView.FindControl("txtCategoria");
-                DropDownList IdCuentaDDL = (DropDownList)EditFormView.FindControl("IdCuentaDDL");
+                TextBox txtIdCliente = (TextBox)EditFormView.FindControl("txtIdCliente");
+                TextBox txtNombre = (TextBox)EditFormView.FindControl("txtNombre");
+
+                TextBox txtRUC = (TextBox)EditFormView.FindControl("txtRUC");
+
+                TextBox txtPorcentCoPropiedad = (TextBox)EditFormView.FindControl("txtPorcentCoPropiedad");
+                TextBox txtUnidad = (TextBox)EditFormView.FindControl("txtUnidad");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(CategoriaDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(ClienteDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "dbo.sp_Categoria_update";
+                cmd.CommandText = "dbo.sp_Cliente_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdCategoria", txtIdCategoria.Text);
-                cmd.Parameters.AddWithValue("@Categoria", txtCategoria.Text);
-                cmd.Parameters.AddWithValue("@IdCuenta", IdCuentaDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdCliente", txtIdCliente.Text);
+                cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+
+                cmd.Parameters.AddWithValue("@RUC", txtRUC.Text);
+
+                cmd.Parameters.AddWithValue("@PorcentCoPropiedad", txtPorcentCoPropiedad.Text);
+                cmd.Parameters.AddWithValue("@Unidad", txtUnidad.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -144,7 +151,7 @@ namespace AdminBoqueron
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Categoria.aspx");
+                Response.Redirect("Cliente.aspx");
 
 
             }
@@ -163,8 +170,14 @@ namespace AdminBoqueron
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            CategoriaListView.DataBind();
+            ClienteListView.DataBind();
 
+        }
+
+        protected void btnClientes_Click(object sender, EventArgs e)
+        {
+            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fClientes&rs:Command=Render') </script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
         }
     }
 }
