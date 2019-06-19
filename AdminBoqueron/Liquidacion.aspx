@@ -6,14 +6,18 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-8">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
                 </div>
                 <div class="col-2">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
+                </div>
+                <div class="col-2">
+                    <asp:LinkButton class="btn btn-primary" runat="server" ID="ContabilidadBtn" OnClick="ContabilidadBtn_Click">
+                        <i class="fas fa-file"></i>
+                    </asp:LinkButton>
                 </div>
             </div>
             <div class="row">
@@ -85,14 +89,14 @@
 
                     </td>
 
-                     <td>
+                    <td>
 
                         <asp:LinkButton runat="server" ID="LiquidarBtn" CommandName="Liquidar" CommandArgument='<%# Eval("IdLiquidacion")%>' ToolTip="Liquidar">
                             <i class="fas fa-calculator"></i>
                         </asp:LinkButton>
 
                     </td>
-                     <td>
+                    <td>
 
                         <asp:LinkButton runat="server" ID="ReportBtn" CommandName="Reporte" CommandArgument='<%# Eval("IdLiquidacion")%>' ToolTip="Reporte">
                             <i class="fas fa-bug"></i>
@@ -172,7 +176,7 @@
                                             <div class="row">
                                                 <div class="col-3">Fecha Liquidacion</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaLiquidacion" runat="server" Text='<%# Bind("FechaLiquidacion") %>' CssClass="form-control" TextMode="Date"/>
+                                                    <asp:TextBox ID="txtFechaLiquidacion" runat="server" Text='<%# Bind("FechaLiquidacion") %>' CssClass="form-control" TextMode="Date" />
                                                 </div>
                                             </div>
 
@@ -240,18 +244,18 @@
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="row">
-                                                <div class="col-3">Timbrado</div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="TimbradoDDL"
-                                                        runat="server"
-                                                        DataSourceID="TimbradoDS"
-                                                        DataTextField="Timbrado"
-                                                        DataValueField="IdTimbrado"
-                                                        CssClass="form-control spacing"
-                                                        SelectedValue='<%# Bind("IdTimbrado") %>'>
-                                                    </asp:DropDownList>
+                                                    <div class="col-3">Timbrado</div>
+                                                    <div class="col-9">
+                                                        <asp:DropDownList ID="TimbradoDDL"
+                                                            runat="server"
+                                                            DataSourceID="TimbradoDS"
+                                                            DataTextField="Timbrado"
+                                                            DataValueField="IdTimbrado"
+                                                            CssClass="form-control spacing"
+                                                            SelectedValue='<%# Bind("IdTimbrado") %>'>
+                                                        </asp:DropDownList>
+                                                    </div>
                                                 </div>
-                                            </div>
                                                 <div class="row">
                                                     <div class="col-3">Fecha Liquidacion</div>
                                                     <div class="col-9">
@@ -314,7 +318,7 @@
         <asp:SqlDataSource ID="PeriodoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
             SelectCommand="select IdPeriodo from dbo.Periodo where IdPeriodo not in (select idPeriodo from Liquidacion) order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
-         <asp:SqlDataSource ID="TimbradoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
+        <asp:SqlDataSource ID="TimbradoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
             SelectCommand="SELECT [IDTimbrado],[Timbrado]  FROM [Boqueron].[dbo].[Timbrado] order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
         <!-- #endregion -->

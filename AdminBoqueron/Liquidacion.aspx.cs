@@ -213,5 +213,11 @@ namespace AdminBoqueron
             LiquidacionListView.DataBind();
 
         }
+
+        protected void ContabilidadBtn_Click(object sender, EventArgs e)
+        {
+            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fContabilidad&rs:Command=Render') </script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
+        }
     }
 }

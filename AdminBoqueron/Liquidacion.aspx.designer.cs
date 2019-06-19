@@ -22,6 +22,15 @@ namespace AdminBoqueron {
         protected global::System.Web.UI.HtmlControls.HtmlButton AddLicitacionBtn;
         
         /// <summary>
+        /// ContabilidadBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ContabilidadBtn;
+        
+        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>

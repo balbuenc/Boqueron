@@ -17,16 +17,12 @@
       <Query>
         <DataSourceName>BoqueronDS</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@IdLiquidacion">
-            <Value>=Parameters!IdLiquidacion.Value</Value>
+          <QueryParameter Name="@year">
+            <Value>=Parameters!year.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        e.IdPeriodo, p.Nombre, e.Concepto, e.Monto, c.Categoria, l.FechaLiquidacion
-FROM            Expensa AS e INNER JOIN
-                         Proveedor AS p ON e.IdProveedor = p.IdProveedor INNER JOIN
-                         Categoria AS c ON p.IdCategoria = c.IdCategoria INNER JOIN
-                         Liquidacion AS l ON l.IdPeriodo = e.IdPeriodo
-WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>sp_obtener_matriz_contable</CommandText>
       </Query>
       <Fields>
         <Field Name="IdPeriodo">
@@ -53,6 +49,22 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
           <DataField>FechaLiquidacion</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="YYYY">
+          <DataField>YYYY</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MM">
+          <DataField>MM</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IdMes">
+          <DataField>IdMes</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="Mes">
+          <DataField>Mes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -60,13 +72,13 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix5">
+          <Tablix Name="Tablix2">
             <TablixCorner>
               <TablixCornerRows>
                 <TablixCornerRow>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox66">
+                      <Textbox Name="Textbox9">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -85,7 +97,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox66</rd:DefaultName>
+                        <rd:DefaultName>Textbox9</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>Solid</Style>
@@ -120,7 +132,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                   </TablixCornerCell>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox71">
+                      <Textbox Name="Textbox10">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -139,7 +151,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox71</rd:DefaultName>
+                        <rd:DefaultName>Textbox10</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>Solid</Style>
@@ -174,7 +186,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                   </TablixCornerCell>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox81">
+                      <Textbox Name="Textbox12">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -193,7 +205,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox81</rd:DefaultName>
+                        <rd:DefaultName>Textbox12</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>Solid</Style>
@@ -232,7 +244,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.23542cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -263,26 +275,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -298,7 +290,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox90">
+                        <Textbox Name="Textbox47">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -308,7 +300,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                   <Value>=Sum(Fields!Monto.Value)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                 </TextRun>
@@ -316,31 +307,11 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox90</rd:DefaultName>
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -356,22 +327,27 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
             <TablixColumnHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="ColumnGroup">
+                  <Group Name="Mes">
                     <GroupExpressions>
-                      <GroupExpression />
+                      <GroupExpression>=Fields!Mes.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!IdMes.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
                   <TablixHeader>
                     <Size>0.6cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox64">
+                      <Textbox Name="Mes">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Monto</Value>
+                                <Value>=Fields!Mes.Value</Value>
                                 <Style>
                                   <FontSize>9pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
@@ -383,7 +359,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox64</rd:DefaultName>
+                        <rd:DefaultName>Mes</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>Solid</Style>
@@ -433,7 +409,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>4.59935cm</Size>
+                    <Size>2.5cm</Size>
                     <CellContents>
                       <Textbox Name="Categoria">
                         <CanGrow>true</CanGrow>
@@ -449,7 +425,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Categoria</rd:DefaultName>
@@ -457,33 +435,13 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                           <Border>
                             <Style>Solid</Style>
                           </Border>
-                          <TopBorder>
-                            <Color>Black</Color>
-                            <Style>Solid</Style>
-                            <Width>1pt</Width>
-                          </TopBorder>
-                          <BottomBorder>
-                            <Color>Black</Color>
-                            <Style>Solid</Style>
-                            <Width>1pt</Width>
-                          </BottomBorder>
-                          <LeftBorder>
-                            <Color>Black</Color>
-                            <Style>Solid</Style>
-                            <Width>1pt</Width>
-                          </LeftBorder>
-                          <RightBorder>
-                            <Color>Black</Color>
-                            <Style>Solid</Style>
-                            <Width>1pt</Width>
-                          </RightBorder>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
-                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
@@ -499,7 +457,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>5.35217cm</Size>
+                        <Size>3.39958cm</Size>
                         <CellContents>
                           <Textbox Name="Nombre">
                             <CanGrow>true</CanGrow>
@@ -563,7 +521,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>6.10275cm</Size>
+                            <Size>4.56375cm</Size>
                             <CellContents>
                               <Textbox Name="Concepto">
                                 <CanGrow>true</CanGrow>
@@ -574,7 +532,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                       <TextRun>
                                         <Value>=Fields!Concepto.Value</Value>
                                         <Style>
-                                          <FontSize>9pt</FontSize>
+                                          <FontSize>8pt</FontSize>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
@@ -614,9 +572,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                               </Textbox>
                             </CellContents>
                           </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember />
-                          </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
@@ -624,9 +579,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>4.59935cm</Size>
+                    <Size>2.5cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox87">
+                      <Textbox Name="Textbox44">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -641,15 +596,16 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Center</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox87</rd:DefaultName>
+                        <rd:DefaultName>Textbox44</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Style>None</Style>
+                            <Style>Solid</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -661,9 +617,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>5.35217cm</Size>
+                        <Size>3.39958cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox88">
+                          <Textbox Name="Textbox45">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -679,11 +635,31 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox88</rd:DefaultName>
+                            <rd:DefaultName>Textbox45</rd:DefaultName>
                             <Style>
                               <Border>
-                                <Style>None</Style>
+                                <Style>Solid</Style>
                               </Border>
+                              <TopBorder>
+                                <Color>Black</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Color>Black</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <LeftBorder>
+                                <Color>Black</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Color>Black</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </RightBorder>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -695,9 +671,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>6.10275cm</Size>
+                            <Size>4.56375cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox89">
+                              <Textbox Name="Textbox46">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -706,18 +682,38 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                       <TextRun>
                                         <Value />
                                         <Style>
-                                          <FontSize>9pt</FontSize>
+                                          <FontSize>8pt</FontSize>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox89</rd:DefaultName>
+                                <rd:DefaultName>Textbox46</rd:DefaultName>
                                 <Style>
                                   <Border>
-                                    <Style>None</Style>
+                                    <Style>Solid</Style>
                                   </Border>
+                                  <TopBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </TopBorder>
+                                  <BottomBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </BottomBorder>
+                                  <LeftBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </RightBorder>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -735,10 +731,10 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.37896cm</Top>
-            <Left>0.49953cm</Left>
+            <Top>0.14111cm</Top>
+            <Left>0.36724cm</Left>
             <Height>1.8cm</Height>
-            <Width>18.55427cm</Width>
+            <Width>12.69875cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -746,13 +742,13 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.83646cm</Height>
+        <Height>2.14313cm</Height>
         <Style />
       </Body>
       <Width>19.91337cm</Width>
       <Page>
         <PageHeader>
-          <Height>3.24266cm</Height>
+          <Height>2.2637cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -779,7 +775,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ADMINISTRACIÓN</Value>
+                      <Value>Informe Contable</Value>
                       <Style>
                         <FontFamily>Segoe UI Light</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -795,7 +791,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>GASTOS DE EXPENSAS Y GASTOS COMUNES</Value>
+                      <Value>Año 2019</Value>
                       <Style>
                         <FontFamily>Segoe UI Light</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -821,74 +817,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="IdPeriodo">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="PERIODO:" + First(Fields!IdPeriodo.Value, "DataSet1")</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>IdPeriodo</rd:DefaultName>
-              <Top>2.47509cm</Top>
-              <Left>0.36724cm</Left>
-              <Height>0.6cm</Height>
-              <Width>4.24625cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="FechaLiquidacion">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="FECHA LIQUIDACION: " + First(Fields!FechaLiquidacion.Value, "DataSet1")</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>FechaLiquidacion</rd:DefaultName>
-              <Top>2.47509cm</Top>
-              <Left>12.51162cm</Left>
-              <Height>0.6cm</Height>
-              <Width>6.54218cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -896,69 +824,8 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
             </Border>
           </Style>
         </PageHeader>
-        <PageFooter>
-          <Height>2.93688cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="textbox2">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>EN VIRTUD AL REGLAMENTO DE COPROPIEDAD DEL EDIFICIO BOQUERON CUMPLIMOS EN SOLICITARLES SE SIRVA HACER EFECTIVO SU APORTE PARA SOPORTAR LAS EXPENSAS COMUNES DEL MES.</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>TODOS LOS COMPROBANTES ORIGINALES OBRAN EN PODER DE LA AMINISTRACION PARA CUALQUIER CONSULTA, RESOLUCIÓN TOMADA EN ASAMBLEA ORDINARIA EL 21 DE ABRIL EL 2001.</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.16521in</Top>
-              <Left>0.14458in</Left>
-              <Height>0.64875in</Height>
-              <Width>7.35691in</Width>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageFooter>
-        <PageHeight>35.56cm</PageHeight>
-        <PageWidth>21.59cm</PageWidth>
+        <PageHeight>21.59cm</PageHeight>
+        <PageWidth>35.56cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>
@@ -969,9 +836,14 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="IdLiquidacion">
-      <DataType>String</DataType>
-      <Prompt>Id Liquidacion</Prompt>
+    <ReportParameter Name="year">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2019</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>year</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -980,9 +852,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
       <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>IdLiquidacion</ParameterName>
+          <ParameterName>year</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
