@@ -43,6 +43,7 @@
                             <th>Periodo</th>
                             <th>Categoria</th>
                             <th>Proveedor</th>
+                            <th>Concepto</th>
                             <th>Fecha</th>
                             <th>Monto</th>
                             <th>Impuesto</th>
@@ -69,6 +70,8 @@
                         <asp:Label ID="lblIdCategoria" runat="server" Text='<%# Eval("Categoria") %>' /></td>
                     <td>
                         <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("Proveedor") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblConcepto" runat="server" Text='<%# Eval("Concepto") %>' /></td>
                     <td>
                         <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha") %>' /></td>
                     <td>
@@ -152,6 +155,12 @@
                                                         CssClass="form-control spacing"
                                                         SelectedValue='<%# Bind("IdProveedor") %>'>
                                                     </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Concepto</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtConcepto" runat="server" Text='<%# Bind("Concepto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -260,6 +269,12 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-3">Concepto</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtConcepto" runat="server" Text='<%# Bind("Concepto") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-3">Fecha</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtFecha" runat="server" Text='<%# Bind("Fecha") %>' CssClass="form-control" TextMode="Date" />
@@ -330,6 +345,7 @@
                 <asp:Parameter Name="Fecha" Type="DateTime" />
                 <asp:Parameter Name="Monto" Type="Decimal" />
                 <asp:Parameter Name="IdImpuesto" Type="Int16" />
+                <asp:Parameter Name="Concepto" Type="String" />
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
@@ -343,7 +359,7 @@
         <asp:SqlDataSource ID="PeriodoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
             SelectCommand="select IdPeriodo  from dbo.Periodo where IdPeriodo not in (select IdPeriodo from Liquidacion) order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
-         <asp:SqlDataSource ID="ImpuestoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
+        <asp:SqlDataSource ID="ImpuestoDS" runat="server" ConnectionString="<%$ ConnectionStrings:BoqueronConnectionString %>"
             SelectCommand="select IdImpuesto , impuesto from impuesto order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
 

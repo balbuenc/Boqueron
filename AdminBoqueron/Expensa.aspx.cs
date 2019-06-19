@@ -125,7 +125,7 @@ namespace AdminBoqueron
                 TextBox txtMonto = (TextBox)EditFormView.FindControl("txtMonto");
                 TextBox txtIdExpensa = (TextBox)EditFormView.FindControl("txtIdExpensa");
                 DropDownList IdImpuestoDDL = (DropDownList)EditFormView.FindControl("IdImpuestoDDL");
-
+                TextBox txtConcepto = (TextBox)EditFormView.FindControl("txtConcepto");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
@@ -143,6 +143,7 @@ namespace AdminBoqueron
                 cmd.Parameters.AddWithValue("@Monto", txtMonto.Text);
                 cmd.Parameters.AddWithValue("@IdExpensa", txtIdExpensa.Text);
                 cmd.Parameters.AddWithValue("@IdImpuesto", IdImpuestoDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@Concepto", txtConcepto.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
