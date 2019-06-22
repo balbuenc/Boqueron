@@ -146,6 +146,7 @@
     <Content Include="css\sb-admin.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Expensa.aspx" />
+    <Content Include="Facturas.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1790,6 +1791,13 @@
     </Compile>
     <Compile Include="Expensa.aspx.designer.cs">
       <DependentUpon>Expensa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facturas.aspx.cs">
+      <DependentUpon>Facturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facturas.aspx.designer.cs">
+      <DependentUpon>Facturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

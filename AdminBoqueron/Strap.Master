@@ -98,7 +98,7 @@
                                 <a class="dropdown-item" href="/Cliente.aspx">Clientes</a>
                                 
                                 <a class="dropdown-item" href="/Categoria.aspx">Categorias</a>
-                                
+                                <a class="dropdown-item" href="/Facturas.aspx">Facturas</a>
                              
                             </div>
                         </li>

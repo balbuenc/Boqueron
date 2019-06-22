@@ -21,7 +21,7 @@
             <Value>=Parameters!IdLiquidacion.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        e.IdPeriodo, p.Nombre, e.Concepto, e.Monto, c.Categoria, l.FechaLiquidacion
+        <CommandText>SELECT        e.IdPeriodo, p.Nombre, e.Concepto, e.Monto, c.Categoria, l.FechaLiquidacion, c.Orden
 FROM            Expensa AS e INNER JOIN
                          Proveedor AS p ON e.IdProveedor = p.IdProveedor INNER JOIN
                          Categoria AS c ON p.IdCategoria = c.IdCategoria INNER JOIN
@@ -52,6 +52,10 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
         <Field Name="FechaLiquidacion">
           <DataField>FechaLiquidacion</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Orden">
+          <DataField>Orden</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -429,7 +433,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Categoria.Value</Value>
+                      <Value>=Fields!Orden.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
@@ -483,7 +487,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
-                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
@@ -495,7 +498,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!Nombre.Value</Value>
+                          <Value>=Fields!Concepto.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
@@ -560,6 +563,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                           <SortExpressions>
                             <SortExpression>
                               <Value>=Fields!Concepto.Value</Value>
+                              <Direction>Descending</Direction>
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
@@ -650,6 +654,16 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <BottomBorder>
+                            <Color>Black</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>Black</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -684,6 +698,11 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                               <Border>
                                 <Style>None</Style>
                               </Border>
+                              <BottomBorder>
+                                <Color>Black</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -718,6 +737,11 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                                   <Border>
                                     <Style>None</Style>
                                   </Border>
+                                  <BottomBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </BottomBorder>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -745,14 +769,64 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>EN VIRTUD AL REGLAMENTO DE COPROPIEDAD DEL EDIFICIO BOQUERON CUMPLIMOS EN SOLICITARLES SE SIRVA HACER EFECTIVO SU APORTE PARA SOPORTAR LAS EXPENSAS COMUNES DEL MES.</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TODOS LOS COMPROBANTES ORIGINALES OBRAN EN PODER DE LA AMINISTRACION PARA CUALQUIER CONSULTA, RESOLUCIÓN TOMADA EN ASAMBLEA ORDINARIA EL 21 DE ABRIL EL 2001.</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.98286in</Top>
+            <Left>0.19667in</Left>
+            <Height>0.64875in</Height>
+            <Width>7.35691in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>3.83646cm</Height>
+        <Height>4.46179cm</Height>
         <Style />
       </Body>
       <Width>19.91337cm</Width>
       <Page>
         <PageHeader>
-          <Height>3.24266cm</Height>
+          <Height>3.39259cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -765,8 +839,8 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                     <TextRun>
                       <Value>EDIFICIO BOQUERÓN</Value>
                       <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>12pt</FontSize>
+                        <FontFamily>Arial</FontFamily>
+                        <FontSize>16pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                       </Style>
@@ -779,9 +853,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ADMINISTRACIÓN</Value>
+                      <Value />
                       <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
+                        <FontFamily>Arial</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
@@ -795,10 +869,26 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>GASTOS DE EXPENSAS Y GASTOS COMUNES</Value>
+                      <Value>ADMINISTRACIÓN </Value>
                       <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
+                        <FontFamily>Arial</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>GASTOS DE EXPENSAS COMUNES</Value>
+                      <Style>
+                        <FontFamily>Arial</FontFamily>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
@@ -811,9 +901,9 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
               </Paragraphs>
               <rd:DefaultName>textbox1</rd:DefaultName>
               <Top>0.25896in</Top>
-              <Left>2.07292in</Left>
-              <Height>0.59666in</Height>
-              <Width>3.5in</Width>
+              <Left>1.26042in</Left>
+              <Height>0.8266in</Height>
+              <Width>5.53125in</Width>
               <Style>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -840,7 +930,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>IdPeriodo</rd:DefaultName>
-              <Top>2.47509cm</Top>
+              <Top>2.79259cm</Top>
               <Left>0.36724cm</Left>
               <Height>0.6cm</Height>
               <Width>4.24625cm</Width>
@@ -874,7 +964,7 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FechaLiquidacion</rd:DefaultName>
-              <Top>2.47509cm</Top>
+              <Top>2.79259cm</Top>
               <Left>12.51162cm</Left>
               <Height>0.6cm</Height>
               <Width>6.54218cm</Width>
@@ -896,67 +986,6 @@ WHERE        (l.IdLiquidacion = @IdLiquidacion)</CommandText>
             </Border>
           </Style>
         </PageHeader>
-        <PageFooter>
-          <Height>2.93688cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="textbox2">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>EN VIRTUD AL REGLAMENTO DE COPROPIEDAD DEL EDIFICIO BOQUERON CUMPLIMOS EN SOLICITARLES SE SIRVA HACER EFECTIVO SU APORTE PARA SOPORTAR LAS EXPENSAS COMUNES DEL MES.</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>TODOS LOS COMPROBANTES ORIGINALES OBRAN EN PODER DE LA AMINISTRACION PARA CUALQUIER CONSULTA, RESOLUCIÓN TOMADA EN ASAMBLEA ORDINARIA EL 21 DE ABRIL EL 2001.</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.16521in</Top>
-              <Left>0.14458in</Left>
-              <Height>0.64875in</Height>
-              <Width>7.35691in</Width>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageFooter>
         <PageHeight>35.56cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>

@@ -49,6 +49,8 @@
                             <th>RUC</th>
                             <th>PorcentCoPropiedad</th>
                             <th>Unidad</th>
+                            <th>Dirección</th>
+                            <th>Telefono</th>
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -74,6 +76,10 @@
                         <asp:Label ID="lblPorcentCoPropiedad" runat="server" Text='<%# Eval("PorcentCoPropiedad") %>' /></td>
                     <td>
                         <asp:Label ID="lblUnidad" runat="server" Text='<%# Eval("Unidad") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblDireccion" runat="server" Text='<%# Eval("Direccion") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblTelefono" runat="server" Text='<%# Eval("Telefono") %>' /></td>
 
 
                     <td>
@@ -150,7 +156,18 @@
                                                     <asp:TextBox ID="txtUnidad" runat="server" Text='<%# Bind("Unidad") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
-
+                                            <div class="row">
+                                                <div class="col-3">Dirección</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDireccion" runat="server" Text='<%# Bind("Direccion") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Teléfono</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtTelefono" runat="server" Text='<%# Bind("Telefono") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
 
                                         </div>
 
@@ -225,6 +242,18 @@
                                                     <asp:TextBox ID="txtUnidad" runat="server" Text='<%# Bind("Unidad") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+                                             <div class="row">
+                                                <div class="col-3">Dirección</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDireccion" runat="server" Text='<%# Bind("Direccion") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Teléfono</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtTelefono" runat="server" Text='<%# Bind("Telefono") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -275,6 +304,8 @@
 
                 <asp:Parameter Name="PorcentCoPropiedad" Type="Decimal" />
                 <asp:Parameter Name="Unidad" Type="String" />
+                <asp:Parameter Name="Direccion" Type="String" />
+                <asp:Parameter Name="Telefono" Type="String" />
 
             </InsertParameters>
             <UpdateParameters>

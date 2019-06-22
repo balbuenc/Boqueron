@@ -125,7 +125,8 @@ namespace AdminBoqueron
 
                 TextBox txtPorcentCoPropiedad = (TextBox)EditFormView.FindControl("txtPorcentCoPropiedad");
                 TextBox txtUnidad = (TextBox)EditFormView.FindControl("txtUnidad");
-
+                TextBox txtDireccion = (TextBox)EditFormView.FindControl("txtDireccion");
+                TextBox txtTelefono = (TextBox)EditFormView.FindControl("txtTelefono");
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
                 SqlConnection conn = new SqlConnection(ClienteDS.ConnectionString);
@@ -142,6 +143,8 @@ namespace AdminBoqueron
 
                 cmd.Parameters.AddWithValue("@PorcentCoPropiedad", txtPorcentCoPropiedad.Text);
                 cmd.Parameters.AddWithValue("@Unidad", txtUnidad.Text);
+                cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
+                cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

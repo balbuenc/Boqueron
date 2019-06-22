@@ -73,9 +73,9 @@
                     <td>
                         <asp:Label ID="lblConcepto" runat="server" Text='<%# Eval("Concepto") %>' /></td>
                     <td>
-                        <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha") %>' /></td>
+                        <asp:Label ID="lblFecha" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("Fecha")) %>' /></td>
                     <td>
-                        <asp:Label ID="lblMonto" runat="server" Text='<%# Eval("Monto") %>' /></td>
+                        <asp:Label ID="lblMonto" runat="server" Text='<%# string.Format("{0:N0}",Eval("Monto")) %>' /></td>
                     <td>
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("Impuesto") %>' /></td>
 

@@ -99,7 +99,7 @@ ORDER BY Cliente.Nombre</CommandText>
                   <Width>0.69345in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.78718in</Width>
+                  <Width>2.24551in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.69345in</Width>
@@ -108,12 +108,12 @@ ORDER BY Cliente.Nombre</CommandText>
                   <Width>0.69345in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.87053in</Width>
+                  <Width>1.40178in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.32014in</Height>
+                  <Height>0.20208in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -124,7 +124,7 @@ ORDER BY Cliente.Nombre</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nro Factura</Value>
+                                  <Value> Factura</Value>
                                   <Style>
                                     <FontFamily>Calibri Light</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -416,7 +416,7 @@ ORDER BY Cliente.Nombre</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Co Propiedad</Value>
+                                  <Value>%</Value>
                                   <Style>
                                     <FontFamily>Calibri Light</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -527,7 +527,7 @@ ORDER BY Cliente.Nombre</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.21in</Height>
+                  <Height>0.20653in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -541,7 +541,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!NroFactira.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -597,7 +597,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!Monto.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
@@ -632,8 +632,8 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!Mora.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <FontSize>6pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -648,26 +648,6 @@ ORDER BY Cliente.Nombre</CommandText>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -689,7 +669,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!Nombre.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -745,7 +725,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!RUC.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -801,7 +781,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!PorcentCoPropiedad.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Format>#,0.00;(#,0.00)</Format>
                                     <Color>#333333</Color>
                                   </Style>
@@ -856,7 +836,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Value>=Fields!Unidad.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -903,7 +883,7 @@ ORDER BY Cliente.Nombre</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20486in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -974,6 +954,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
@@ -1008,7 +989,8 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1023,26 +1005,6 @@ ORDER BY Cliente.Nombre</CommandText>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1064,6 +1026,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1119,6 +1082,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1174,6 +1138,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1227,6 +1192,7 @@ ORDER BY Cliente.Nombre</CommandText>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1308,215 +1274,159 @@ ORDER BY Cliente.Nombre</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.06944in</Top>
+            <Top>1.06944in</Top>
             <Left>0.18751in</Left>
-            <Height>0.78014in</Height>
-            <Width>7.29163in</Width>
+            <Height>0.61347in</Height>
+            <Width>7.28123in</Width>
             <Style />
           </Tablix>
+          <Textbox Name="textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Informe de distribución de Expensas</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.125in</Top>
+            <Left>2.00001in</Left>
+            <Height>0.23208in</Height>
+            <Width>3.5in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Fecha liquidación: " + FormatDateTime(First(Fields!FechaLiquidacion.Value, "DataSet1"), DateFormat.ShortDate)</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.47396in</Top>
+            <Left>0.1771in</Left>
+            <Height>0.23208in</Height>
+            <Width>2.51042in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Monto a distribuir: " + FormatNumber( Sum(Fields!Monto.Value, "DataSet1"),0)</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.7477in</Top>
+            <Left>0.1771in</Left>
+            <Height>0.23208in</Height>
+            <Width>2.51042in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Id. liquidación: " + First(Fields!IdPeriodo.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.7477in</Top>
+            <Left>5.2604in</Left>
+            <Height>0.23208in</Height>
+            <Width>2.20834in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>2.15794cm</Height>
+        <Height>5.12126cm</Height>
         <Style />
       </Body>
       <Width>19.42042cm</Width>
       <Page>
-        <PageHeader>
-          <Height>2.98979cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="textbox1">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Informe de distribución de Expensas</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>Underline</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.22771in</Top>
-              <Left>2.01042in</Left>
-              <Height>0.23208in</Height>
-              <Width>3.5in</Width>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="textbox2">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Fecha liquidación: " + FormatDateTime(First(Fields!FechaLiquidacion.Value, "DataSet1"), DateFormat.ShortDate)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.58188in</Top>
-              <Left>0.18751in</Left>
-              <Height>0.23208in</Height>
-              <Width>2.51042in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="textbox3">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Monto a distribuir: " + FormatNumber( Sum(Fields!Monto.Value, "DataSet1"),0)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.85562in</Top>
-              <Left>0.18751in</Left>
-              <Height>0.23208in</Height>
-              <Width>2.51042in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="textbox11">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Id. liquidación: " + First(Fields!IdPeriodo.Value, "DataSet1")</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.85562in</Top>
-              <Left>5.27081in</Left>
-              <Height>0.23208in</Height>
-              <Width>2.20834in</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageHeader>
-        <PageFooter>
-          <Height>1.11125cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="textbox12">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.06944in</Top>
-              <Left>5.27081in</Left>
-              <Height>0.23208in</Height>
-              <Width>2.20834in</Width>
-              <Style>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageFooter>
         <PageHeight>35.56cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>
-        <BottomMargin>0.5cm</BottomMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>

@@ -62,9 +62,9 @@
                     <td>
                         <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("Nombre") %>' /></td>
                     <td>
-                        <asp:Label ID="lblMonto" runat="server" Text='<%# Eval("Monto") %>' /></td>
+                        <asp:Label ID="lblMonto" runat="server" Text='<%# string.Format("{0:N0}",Eval("Monto")) %>' /></td>
                     <td>
-                        <asp:Label ID="lblMora" runat="server" Text='<%# Eval("Mora") %>' /></td>
+                        <asp:Label ID="lblMora" runat="server" Text='<%# string.Format("{0:N0}", Eval("Mora")) %>' /></td>
 
                     <td>
                         <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' /></td>
