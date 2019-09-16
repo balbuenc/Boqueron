@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Plan Cuentas" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="PlanCuenta.aspx.cs" Inherits="AdminBoqueron.PlanCuenta" %>
+﻿<%@ Page Title="Plan Cuentas" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="PlanCuenta.aspx.cs" Inherits="AdminBoqueron.PlanCuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

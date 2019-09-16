@@ -144,7 +144,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   </TablixColumns>
                   <TablixRows>
                     <TablixRow>
-                      <Height>1.32314cm</Height>
+                      <Height>1.3cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -157,6 +157,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                                     <TextRun>
                                       <Value>1</Value>
                                       <Style>
+                                        <FontFamily>Times New Roman</FontFamily>
                                         <FontSize>9pt</FontSize>
                                       </Style>
                                     </TextRun>
@@ -189,11 +190,14 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                                     <TextRun>
                                       <Value>=Fields!Concepto.Value</Value>
                                       <Style>
+                                        <FontFamily>Times New Roman</FontFamily>
                                         <FontSize>9pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
-                                  <Style />
+                                  <Style>
+                                    <LineHeight>19pt</LineHeight>
+                                  </Style>
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Concepto</rd:DefaultName>
@@ -251,6 +255,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                                     <TextRun>
                                       <Value>=FormatNumber(Fields!Importe.Value,0)</Value>
                                       <Style>
+                                        <FontFamily>Times New Roman</FontFamily>
                                         <FontSize>9pt</FontSize>
                                         <Format>#,0;(#,0)</Format>
                                       </Style>
@@ -328,7 +333,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                 </TablixRowHierarchy>
                 <KeepTogether>true</KeepTogether>
                 <DataSetName>FacturacionDetallesDS</DataSetName>
-                <Height>1.32314cm</Height>
+                <Height>1.3cm</Height>
                 <Width>17.8cm</Width>
                 <Style>
                   <Border>
@@ -360,6 +365,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRun>
                     <Value>=FormatNumber(Sum(Fields!Total.Value, "FacturaDataSet"),0)</Value>
                     <Style>
+                      <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
                       <Format>n</Format>
                     </Style>
@@ -393,14 +399,15 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRun>
                     <Value>=code.obj.conviertecifra(round(Sum(Fields!Total.Value, "FacturaDataSet"),0))</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>6.8cm</Top>
+            <Top>6.5cm</Top>
             <Left>4.02917cm</Left>
             <Height>1cm</Height>
             <Width>10.65875cm</Width>
@@ -420,6 +427,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRun>
                     <Value>=Microsoft.VisualBasic.Strings.FormatNumber(Sum(Fields!Total.Value, "FacturaDataSet"), 0)</Value>
                     <Style>
+                      <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
                       <Format>n</Format>
                     </Style>
@@ -432,7 +440,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
             </Paragraphs>
             <Top>5.90042cm</Top>
             <Left>11.8cm</Left>
-            <Height>0.79375cm</Height>
+            <Height>0.58208cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -468,6 +476,8 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                     <TextRun>
                       <Value>=First(Fields!Fecha.Value, "FacturaDataSet")</Value>
                       <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <Format>d</Format>
                       </Style>
                     </TextRun>
@@ -498,7 +508,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!Cliente.Value, "FacturaDataSet")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -506,10 +519,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>5.6cm</Top>
+              <Top>5.5cm</Top>
               <Left>4.5cm</Left>
               <Height>0.6cm</Height>
-              <Width>8.04333cm</Width>
+              <Width>9.56639cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -528,7 +541,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!R_U_C_.Value, "FacturaDataSet")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -558,13 +574,16 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!Dirección.Value, "FacturaDataSet")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.4cm</Top>
+              <Top>6.2cm</Top>
               <Left>2.5cm</Left>
               <Height>0.6cm</Height>
               <Width>11.56639cm</Width>
@@ -587,7 +606,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>XX</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -622,7 +644,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>XX</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -656,7 +681,10 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!Teléfono.Value, "FacturaDataSet")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -664,7 +692,7 @@ WHERE        (t.IdDocumento = @IdDocumento)</CommandText>
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>6.4cm</Top>
+              <Top>6.2cm</Top>
               <Left>14.84576cm</Left>
               <Height>0.6cm</Height>
               <Width>2.96776cm</Width>

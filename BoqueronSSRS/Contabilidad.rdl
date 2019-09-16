@@ -57,6 +57,10 @@
           <DataField>MM</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Orden">
+          <DataField>Orden</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
         <Field Name="IdMes">
           <DataField>IdMes</DataField>
           <rd:TypeName>System.Int16</rd:TypeName>
@@ -85,9 +89,9 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Categoria</Value>
+                                <Value>Cat.</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -122,6 +126,7 @@
                             <Style>Solid</Style>
                             <Width>1pt</Width>
                           </RightBorder>
+                          <BackgroundColor>Silver</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -141,7 +146,7 @@
                               <TextRun>
                                 <Value>Proveedor</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -176,6 +181,7 @@
                             <Style>Solid</Style>
                             <Width>1pt</Width>
                           </RightBorder>
+                          <BackgroundColor>Silver</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -195,7 +201,7 @@
                               <TextRun>
                                 <Value>Concepto</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -230,6 +236,7 @@
                             <Style>Solid</Style>
                             <Width>1pt</Width>
                           </RightBorder>
+                          <BackgroundColor>Silver</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -244,7 +251,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.23542cm</Width>
+                  <Width>1.865cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -262,7 +269,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Monto.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                 </TextRun>
@@ -299,7 +306,8 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Monto.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                 </TextRun>
@@ -338,7 +346,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>1.08507cm</Size>
                     <CellContents>
                       <Textbox Name="Mes">
                         <CanGrow>true</CanGrow>
@@ -349,7 +357,7 @@
                               <TextRun>
                                 <Value>=Fields!Mes.Value</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -384,6 +392,7 @@
                             <Style>Solid</Style>
                             <Width>1pt</Width>
                           </RightBorder>
+                          <BackgroundColor>Silver</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -400,19 +409,29 @@
                 <TablixMember>
                   <Group Name="Categoria">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Categoria.Value</GroupExpression>
+                      <GroupExpression>=Fields!Orden.Value</GroupExpression>
                     </GroupExpressions>
+                    <Filters>
+                      <Filter>
+                        <FilterExpression>=Fields!Categoria.Value</FilterExpression>
+                        <Operator>NotEqual</Operator>
+                        <FilterValues>
+                          <FilterValue>null</FilterValue>
+                        </FilterValues>
+                      </Filter>
+                    </Filters>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Categoria.Value</Value>
+                      <Value>=Fields!Orden.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>1.28292cm</Size>
                     <CellContents>
                       <Textbox Name="Categoria">
                         <CanGrow>true</CanGrow>
+                        <CanShrink>true</CanShrink>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
@@ -420,7 +439,7 @@
                               <TextRun>
                                 <Value>=Fields!Categoria.Value</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -440,8 +459,10 @@
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
+                          <WritingMode>Rotate270</WritingMode>
                         </Style>
                       </Textbox>
+                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
@@ -457,7 +478,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>3.39958cm</Size>
+                        <Size>5.01354cm</Size>
                         <CellContents>
                           <Textbox Name="Nombre">
                             <CanGrow>true</CanGrow>
@@ -468,7 +489,7 @@
                                   <TextRun>
                                     <Value>=Fields!Nombre.Value</Value>
                                     <Style>
-                                      <FontSize>9pt</FontSize>
+                                      <FontSize>7pt</FontSize>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
@@ -521,7 +542,7 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>4.56375cm</Size>
+                            <Size>4.77542cm</Size>
                             <CellContents>
                               <Textbox Name="Concepto">
                                 <CanGrow>true</CanGrow>
@@ -532,7 +553,7 @@
                                       <TextRun>
                                         <Value>=Fields!Concepto.Value</Value>
                                         <Style>
-                                          <FontSize>8pt</FontSize>
+                                          <FontSize>7pt</FontSize>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
@@ -579,7 +600,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>1.28292cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox44">
                         <CanGrow>true</CanGrow>
@@ -590,7 +611,7 @@
                               <TextRun>
                                 <Value>Total</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -617,7 +638,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>3.39958cm</Size>
+                        <Size>5.01354cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox45">
                             <CanGrow>true</CanGrow>
@@ -628,7 +649,8 @@
                                   <TextRun>
                                     <Value />
                                     <Style>
-                                      <FontSize>9pt</FontSize>
+                                      <FontSize>8pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
@@ -671,7 +693,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>4.56375cm</Size>
+                            <Size>4.77542cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox46">
                                 <CanGrow>true</CanGrow>
@@ -683,6 +705,7 @@
                                         <Value />
                                         <Style>
                                           <FontSize>8pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
@@ -730,11 +753,13 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.14111cm</Top>
-            <Left>0.36724cm</Left>
-            <Height>1.8cm</Height>
-            <Width>12.69875cm</Width>
+            <Top>0.17639cm</Top>
+            <Left>0.31432cm</Left>
+            <Height>2.28507cm</Height>
+            <Width>12.93687cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -742,29 +767,27 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.14313cm</Height>
+        <Height>2.92007cm</Height>
         <Style />
       </Body>
-      <Width>19.91337cm</Width>
+      <Width>25cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.2637cm</Height>
+          <Height>1.6287cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="textbox1">
+            <Textbox Name="Textbox1">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>EDIFICIO BOQUERÓN</Value>
+                      <Value>Edificio Boquerón</Value>
                       <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>12pt</FontSize>
+                        <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <TextDecoration>Underline</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -775,28 +798,9 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Informe Contable</Value>
+                      <Value>Informe anual 2019</Value>
                       <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Año 2019</Value>
-                      <Style>
-                        <FontFamily>Segoe UI Light</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -805,12 +809,15 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.25896in</Top>
-              <Left>2.07292in</Left>
-              <Height>0.59666in</Height>
-              <Width>3.5in</Width>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.31432cm</Top>
+              <Left>13.65771cm</Left>
+              <Height>1.20854cm</Height>
+              <Width>5.41042cm</Width>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -828,8 +835,8 @@
         <PageWidth>35.56cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
-        <TopMargin>0.5cm</TopMargin>
-        <BottomMargin>0.5cm</BottomMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
@@ -860,6 +867,7 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <Language>es-PY</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>23bdd38b-6795-4ddf-92d6-33032817e8dc</rd:ReportID>
 </Report>

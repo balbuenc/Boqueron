@@ -9,6 +9,10 @@
       <FullPath>Clientes.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Contabilidad.rdl</Name>
+      <FullPath>Contabilidad.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Factura.rdl</Name>
       <FullPath>Factura.rdl</FullPath>
     </ProjectItem>
@@ -19,10 +23,6 @@
     <ProjectItem>
       <Name>LiquidacionDetalle.rdl</Name>
       <FullPath>LiquidacionDetalle.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Contabilidad.rdl</Name>
-      <FullPath>Contabilidad.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

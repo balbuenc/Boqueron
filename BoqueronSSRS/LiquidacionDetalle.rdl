@@ -28,7 +28,7 @@ FROM            LiquidacionDetalle INNER JOIN
                          Liquidacion ON LiquidacionDetalle.IdLiquidacion = Liquidacion.IdLiquidacion
 						 left outer join Talonario t on t.IdDocumento = LiquidacionDetalle.IdDocumento
 WHERE        (LiquidacionDetalle.IdLiquidacion = @IdLiquidacion)
-ORDER BY Cliente.Nombre</CommandText>
+ORDER BY Cliente.Orden</CommandText>
       </Query>
       <Fields>
         <Field Name="IdLiquidacion">
@@ -1274,7 +1274,7 @@ ORDER BY Cliente.Nombre</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>1.06944in</Top>
+            <Top>0.65048in</Top>
             <Left>0.18751in</Left>
             <Height>0.61347in</Height>
             <Width>7.28123in</Width>
@@ -1301,7 +1301,7 @@ ORDER BY Cliente.Nombre</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>0.125in</Top>
+            <Top>0.2cm</Top>
             <Left>2.00001in</Left>
             <Height>0.23208in</Height>
             <Width>3.5in</Width>
@@ -1335,10 +1335,10 @@ ORDER BY Cliente.Nombre</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>0.47396in</Top>
+            <Top>0.34896in</Top>
             <Left>0.1771in</Left>
             <Height>0.23208in</Height>
-            <Width>2.51042in</Width>
+            <Width>1.84375in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -1369,10 +1369,10 @@ ORDER BY Cliente.Nombre</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>0.7477in</Top>
-            <Left>0.1771in</Left>
+            <Top>0.34896in</Top>
+            <Left>2.16964in</Left>
             <Height>0.23208in</Height>
-            <Width>2.51042in</Width>
+            <Width>1.97917in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -1403,10 +1403,10 @@ ORDER BY Cliente.Nombre</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>0.7477in</Top>
-            <Left>5.2604in</Left>
+            <Top>0.34896in</Top>
+            <Left>6.06696in</Left>
             <Height>0.23208in</Height>
-            <Width>2.20834in</Width>
+            <Width>1.40178in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -1416,7 +1416,7 @@ ORDER BY Cliente.Nombre</CommandText>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>5.12126cm</Height>
+        <Height>3.63959cm</Height>
         <Style />
       </Body>
       <Width>19.42042cm</Width>
