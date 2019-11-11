@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Facturación" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="Facturas.aspx.cs" Inherits="AdminBoqueron.Facturas" %>
+﻿<%@ Page Title="Facturación" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Facturas.aspx.cs" Inherits="AdminBoqueron.Facturas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

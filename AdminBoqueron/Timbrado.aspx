@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Talonarios" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="Timbrado.aspx.cs" Inherits="AdminBoqueron.Timbrado" %>
+﻿<%@ Page Title="Talonarios" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Timbrado.aspx.cs" Inherits="AdminBoqueron.Timbrado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

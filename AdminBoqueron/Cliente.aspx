@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Clientes" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="AdminBoqueron.Cliente" %>
+﻿<%@ Page Title="Clientes" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="AdminBoqueron.Cliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

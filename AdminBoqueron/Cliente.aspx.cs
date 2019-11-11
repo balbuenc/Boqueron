@@ -179,7 +179,7 @@ namespace AdminBoqueron
 
         protected void btnClientes_Click(object sender, EventArgs e)
         {
-            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBuildingSSRS%2fClientes&rs:Command=Render') </script>";
+            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fClientes&rs:Command=Render') </script>";
             ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
         }
     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Detalle de liquidación" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="LiquidacionDetalle.aspx.cs" Inherits="AdminBoqueron.LiquidacionDetalle" %>
+﻿<%@ Page Title="Detalle de liquidación" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="LiquidacionDetalle.aspx.cs" Inherits="AdminBoqueron.LiquidacionDetalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

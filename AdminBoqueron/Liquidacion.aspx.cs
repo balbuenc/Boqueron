@@ -104,14 +104,14 @@ namespace AdminBoqueron
             else if (e.CommandName == "Reporte")
             {
 
-                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBuildingSSRS%2fLiquidacionDetalle&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
+                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fLiquidacionDetalle&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
 
             }
             else if (e.CommandName == "Resumen")
             {
 
-                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBuildingSSRS%2fGastos&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
+                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fGastos&rs:Command=Render&IdLiquidacion=" + e.CommandArgument.ToString() + "') </script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
 
             }
@@ -216,7 +216,7 @@ namespace AdminBoqueron
 
         protected void ContabilidadBtn_Click(object sender, EventArgs e)
         {
-            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBuildingSSRS%2fContabilidad&rs:Command=Render') </script>";
+            string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fContabilidad&rs:Command=Render') </script>";
             ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
         }
     }

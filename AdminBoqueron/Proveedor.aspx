@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Proveedores" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="AdminBoqueron.Proveedor" %>
+﻿<%@ Page Title="Proveedores" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="AdminBoqueron.Proveedor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

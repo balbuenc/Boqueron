@@ -19,7 +19,7 @@ namespace AdminBoqueron
             if (e.CommandName == "Facturar")
             {
 
-                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBuildingSSRS%2fFactura&rs:Command=Render&IdDocumento=" + e.CommandArgument.ToString() + "') </script>";
+                string popupScript = "<script language=javascript> window.open('http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fBoqueronSSRS%2fFactura&rs:Command=Render&IdDocumento=" + e.CommandArgument.ToString() + "') </script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "callpopup", popupScript);
 
             }

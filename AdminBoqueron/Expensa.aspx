@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Expensa" Language="C#" MasterPageFile="~/Enigma.Master" AutoEventWireup="true" CodeBehind="Expensa.aspx.cs" Inherits="AdminBoqueron.Expensa" %>
+﻿<%@ Page Title="Expensa" Language="C#" MasterPageFile="~/Strap.Master" AutoEventWireup="true" CodeBehind="Expensa.aspx.cs" Inherits="AdminBoqueron.Expensa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
